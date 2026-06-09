@@ -151,7 +151,8 @@ function Header() {
           <button
             type="button"
             aria-label="Open navigation menu"
-            className="fixed right-5 top-4 z-[70] grid h-12 w-12 place-items-center rounded-full border border-line bg-white text-ink shadow-[0_16px_36px_rgba(15,23,42,0.22)] transition hover:border-slate-300 hover:bg-cloud focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal lg:hidden"
+            className="mobile-menu-button fixed right-5 top-4 z-[70] grid h-12 w-12 place-items-center rounded-full transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal lg:hidden"
+            style={{ backgroundColor: '#ffffff', color: '#0b0f19' }}
             onClick={() => setOpen(true)}
           >
             <Menu className="h-5 w-5" />
