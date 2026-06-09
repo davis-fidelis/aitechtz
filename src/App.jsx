@@ -130,7 +130,7 @@ function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/60 bg-white/90 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-white">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8" aria-label="Main">
         <a href="#top" className="flex items-center gap-3" aria-label="AI TECH TZ home">
           <img src="/assets/ai-tech-tz-logo.jpeg" alt="AI TECH TZ logo" className="h-11 w-11 rounded-full object-cover" />
