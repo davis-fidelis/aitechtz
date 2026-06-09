@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI TECH TZ builds mobile apps, websites, AI solutions, automation systems, digital transformation programs, and advertisement video production for ambitious businesses in Tanzania."
+    />
+    <title>AI TECH TZ | Premium Technology Solutions in Tanzania</title>
+    <link rel="icon" type="image/png" href="./public/assets/apple-touch-icon.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; font-family: Inter, system-ui, sans-serif; color: #0b0f19; background: #fff; }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+      .nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(18px); border-bottom: 1px solid #e2e8f0; }
+      .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+      .brand img { width: 44px; height: 44px; border-radius: 999px; object-fit: cover; }
+      .links { display: flex; align-items: center; gap: 26px; color: #475569; font-weight: 650; font-size: 14px; }
+      .phone { background: #0b0f19; color: #fff; padding: 12px 18px; border-radius: 999px; font-weight: 750; }
+      .hamburger { display: none; position: fixed; right: 20px; top: 16px; z-index: 30; width: 48px; height: 48px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: #0b0f19; color: #fff; box-shadow: 0 18px 40px rgba(15,23,42,.22); font-size: 24px; line-height: 1; cursor: pointer; }
+      .drawer-backdrop { position: fixed; inset: 0; z-index: 40; display: none; background: rgba(11,15,25,.38); backdrop-filter: blur(8px); }
+      .drawer-backdrop.open { display: block; }
+      .drawer { margin-left: auto; width: min(360px, 88vw); height: 100%; background: #fff; padding: 26px; box-shadow: 0 24px 70px rgba(15,23,42,.24); transform: translateX(100%); transition: transform .28s ease; }
+      .drawer-backdrop.open .drawer { transform: translateX(0); }
+      .drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 34px; font-weight: 800; }
+      .drawer-close { width: 42px; height: 42px; border: 1px solid #e2e8f0; border-radius: 999px; background: #fff; font-size: 24px; cursor: pointer; }
+      .drawer-links { display: grid; gap: 18px; font-size: 19px; font-weight: 750; }
+      .hero { position: relative; overflow: hidden; padding: 86px 0 92px; background: radial-gradient(circle at 15% 0%, rgba(14,165,164,.16), transparent 32%), linear-gradient(180deg,#fff,#f8fafc); }
+      .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+      .eyebrow { display: inline-flex; border: 1px solid #e2e8f0; background: #fff; border-radius: 999px; padding: 9px 14px; color: #475569; font-weight: 700; font-size: 14px; box-shadow: 0 8px 26px rgba(15,23,42,.06); }
+      h1 { margin: 24px 0 0; font-size: clamp(44px, 7vw, 76px); line-height: .97; letter-spacing: 0; }
+      h2 { margin: 0; font-size: clamp(32px, 4.6vw, 54px); line-height: 1.06; letter-spacing: 0; }
+      h3 { margin: 0; font-size: 21px; }
+      p { color: #475569; line-height: 1.75; }
+      .hero p { max-width: 640px; font-size: 18px; margin-top: 24px; }
+      .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 13px 22px; border-radius: 999px; font-weight: 800; transition: transform .25s ease, box-shadow .25s ease; }
+      .btn:hover { transform: translateY(-2px); }
+      .btn-primary { background: #0ea5a4; color: white; box-shadow: 0 12px 26px rgba(14,165,164,.22); }
+      .btn-secondary { border: 1px solid #e2e8f0; background: #fff; }
+      .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 46px; padding-top: 28px; border-top: 1px solid #e2e8f0; max-width: 580px; }
+      .stat strong { display: block; font-size: 26px; }
+      .stat span { color: #64748b; font-size: 14px; }
+      .panel { border-radius: 10px; overflow: hidden; background: #0b0f19; box-shadow: 0 24px 70px rgba(15,23,42,.16); color: #fff; }
+      .panel-head { display: flex; justify-content: space-between; align-items: center; padding: 18px; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .panel-head p { margin: 0; color: rgba(255,255,255,.62); font-size: 14px; }
+      .panel-head strong { display: block; margin-top: 4px; }
+      .panel-body { padding: 18px; display: grid; gap: 16px; }
+      .panel img { width: 100%; height: 230px; object-fit: cover; border-radius: 8px; opacity: .9; }
+      .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .metric { border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.08); border-radius: 8px; padding: 16px; }
+      .metric span { color: rgba(255,255,255,.62); font-size: 14px; }
+      .metric strong { display: block; margin-top: 8px; color: white; font-size: 32px; }
+      section { padding: 92px 0; }
+      .section-head { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+      .section-head .label { margin: 0 0 12px; color: #0ea5a4; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; }
+      .section-head p { font-size: 18px; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+      .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+      .card { border: 1px solid #e2e8f0; border-radius: 8px; background: #fff; padding: 28px; box-shadow: 0 1px 0 rgba(15,23,42,.04); transition: transform .25s ease, box-shadow .25s ease; }
+      .card:hover { transform: translateY(-4px); box-shadow: 0 24px 70px rgba(15,23,42,.10); }
+      .icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 24px; border-radius: 8px; background: rgba(14,165,164,.1); color: #0ea5a4; font-weight: 900; }
+      .cloud { background: #f8fafc; }
+      .portfolio-img { width: 100%; height: 170px; object-fit: cover; margin-top: 24px; border-radius: 8px; }
+      .dark { background: #0b0f19; color: white; }
+      .dark p { color: rgba(255,255,255,.72); }
+      .dark .label { color: #f4b860; }
+      .why-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+      .check { display: flex; gap: 14px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.08); border-radius: 8px; padding: 18px; margin-bottom: 14px; color: rgba(255,255,255,.82); }
+      .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 42px; }
+      .contact-line { display: flex; gap: 12px; align-items: flex-start; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-top: 14px; color: #475569; }
+      form { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 28px; box-shadow: 0 24px 70px rgba(15,23,42,.10); }
+      .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      label { display: grid; gap: 8px; font-size: 14px; font-weight: 750; }
+      input, select, textarea { width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 13px 14px; font: inherit; background: #fff; color: #0b0f19; }
+      .wide { grid-column: 1 / -1; }
+      footer { background: #0b0f19; color: #fff; padding: 42px 0; }
+      .foot { display: flex; justify-content: space-between; gap: 24px; align-items: center; border-top: 1px solid rgba(255,255,255,.1); padding-top: 28px; }
+      .foot p { margin: 0; color: rgba(255,255,255,.62); }
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+      .reveal.visible { opacity: 1; transform: none; }
+      @media (max-width: 900px) {
+        .links { display: none; }
+        .hamburger { display: grid; place-items: center; }
+        .hero-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+        .grid-3 { grid-template-columns: 1fr 1fr; }
+        .grid-4 { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 640px) {
+        .container { width: min(100% - 28px, 1120px); }
+        .phone { display: none; }
+        .hero, section { padding: 64px 0; }
+        .grid-3, .grid-4, .form-grid, .stats, .metric-grid { grid-template-columns: 1fr; }
+        .panel img { height: 190px; }
+        .foot { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top"><img src="./public/assets/ai-tech-tz-logo.jpeg" alt="AI TECH TZ logo" />AI TECH TZ</a>
+        <div class="links">
+          <a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#process">Process</a><a href="#why-us">Why Us</a><a href="#contact">Contact</a>
+        </div>
+        <a class="phone" href="tel:0795448801">0795448801</a>
+        <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false">≡</button>
+      </div>
+    </nav>
+    <div class="drawer-backdrop" aria-hidden="true">
+      <div class="drawer" role="dialog" aria-label="Mobile navigation">
+        <div class="drawer-head"><span>AI TECH TZ</span><button class="drawer-close" type="button" aria-label="Close navigation menu">×</button></div>
+        <div class="drawer-links">
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#process">Process</a>
+          <a href="#why-us">Why Us</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-primary" href="tel:0795448801">Call 0795448801</a>
+        </div>
+      </div>
+    </div>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="reveal">
+            <span class="eyebrow">Premium technology partner in Tanzania</span>
+            <h1>Build smarter digital products for a faster business.</h1>
+            <p>AI TECH TZ designs and develops mobile apps, websites, AI solutions, business automation systems, digital transformation programs, and advertisement videos for ambitious teams.</p>
+            <div class="actions"><a class="btn btn-primary" href="#contact">Start a Project</a><a class="btn btn-secondary" href="#portfolio">View Work</a></div>
+            <div class="stats"><div class="stat"><strong>6+</strong><span>Core services</span></div><div class="stat"><strong>24/7</strong><span>Digital support mindset</span></div><div class="stat"><strong>TZ</strong><span>Local market focus</span></div></div>
+          </div>
+          <div class="panel reveal">
+            <div class="panel-head"><div><p>AI TECH TZ delivery suite</p><strong>Product Command Center</strong></div><strong>AI</strong></div>
+            <div class="panel-body">
+              <img src="./public/assets/digital-platform.jpeg" alt="Abstract connected digital platform interface" />
+              <div class="metric-grid"><div class="metric"><span>Automation Load</span><strong>72%</strong></div><div class="metric"><span>Launch Readiness</span><strong>94%</strong></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services">
+        <div class="container">
+          <div class="section-head reveal"><p class="label">Services</p><h2>Technology services designed for business outcomes</h2><p>From customer-facing products to internal systems, every service is shaped around clarity, speed, usability, and measurable value.</p></div>
+          <div class="grid-3">
+            <article class="card reveal"><div class="icon">01</div><h3>Mobile App Development</h3><p>Polished iOS, Android, and cross-platform apps built for reliable launches and long-term growth.</p></article>
+            <article class="card reveal"><div class="icon">02</div><h3>Website Development</h3><p>Fast, accessible websites and web apps with premium UX, clean content structure, and conversion focus.</p></article>
+            <article class="card reveal"><div class="icon">03</div><h3>AI Solutions</h3><p>Custom AI assistants, knowledge systems, analytics workflows, and practical automation for teams.</p></article>
+            <article class="card reveal"><div class="icon">04</div><h3>Business Automation</h3><p>Internal systems that reduce manual work across operations, reporting, customer service, and sales.</p></article>
+            <article class="card reveal"><div class="icon">05</div><h3>Digital Transformation</h3><p>Strategy, systems integration, and modern workflows that help businesses operate with clarity.</p></article>
+            <article class="card reveal"><div class="icon">06</div><h3>Advertisement Video Production</h3><p>Brand-led promotional videos, launch assets, and campaign visuals for digital channels.</p></article>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio" class="cloud">
+        <div class="container">
+          <div class="section-head reveal"><p class="label">Portfolio</p><h2>Selected digital work patterns</h2><p>A premium presentation of the kind of outcomes AI TECH TZ creates across software, automation, AI, and campaign production.</p></div>
+          <div class="grid-3">
+            <article class="card reveal"><p class="label">Fintech</p><h3>Mobile banking experience</h3><p>A secure account dashboard and agent workflow designed for fast customer onboarding.</p><img class="portfolio-img" src="./public/assets/digital-platform.jpeg" alt="" /></article>
+            <article class="card reveal"><p class="label">Operations</p><h3>Business automation portal</h3><p>A workflow hub for approvals, reporting, task routing, and performance visibility.</p><img class="portfolio-img" src="./public/assets/digital-platform.jpeg" alt="" /></article>
+            <article class="card reveal"><p class="label">Brand Growth</p><h3>Digital campaign production</h3><p>Launch videos and web landing pages crafted for stronger online acquisition.</p><img class="portfolio-img" src="./public/assets/production-accent.jpeg" alt="" /></article>
+          </div>
+        </div>
+      </section>
+      <section id="process">
+        <div class="container">
+          <div class="section-head reveal"><p class="label">Process</p><h2>A calm, structured path from idea to launch</h2><p>The process keeps stakeholders aligned while giving designers, developers, and content producers room to do excellent work.</p></div>
+          <div class="grid-4">
+            <article class="card reveal"><div class="icon">1</div><h3>Discover</h3><p>Map business goals, audience needs, system requirements, and success metrics.</p></article>
+            <article class="card reveal"><div class="icon">2</div><h3>Design</h3><p>Create polished user flows, interfaces, architecture, and delivery milestones.</p></article>
+            <article class="card reveal"><div class="icon">3</div><h3>Build</h3><p>Develop with modern React, scalable APIs, automation logic, and quality checks.</p></article>
+            <article class="card reveal"><div class="icon">4</div><h3>Launch</h3><p>Deploy, measure, improve, and support the product after release.</p></article>
+          </div>
+        </div>
+      </section>
+      <section id="why-us" class="dark">
+        <div class="container why-grid">
+          <div class="reveal"><p class="label">Why choose us</p><h2>Built with the discipline of a product team and the polish of a premium studio.</h2><p>AI TECH TZ blends software development, automation thinking, AI capability, and media production into one focused partner for modern businesses.</p></div>
+          <div class="reveal"><div class="check">✓ Local understanding of Tanzanian customers and business operations</div><div class="check">✓ Premium interface design paired with practical engineering decisions</div><div class="check">✓ Clear communication from strategy through delivery and support</div><div class="check">✓ Solutions built for performance, accessibility, maintainability, and growth</div></div>
+        </div>
+      </section>
+      <section class="cloud">
+        <div class="container">
+          <div class="section-head reveal"><p class="label">Testimonials</p><h2>Trusted for clarity, execution, and polish</h2><p>Clients value the ability to translate business needs into digital products, workflows, and campaign assets that feel complete.</p></div>
+          <div class="grid-3">
+            <figure class="card reveal"><blockquote>"AI TECH TZ helped us turn a scattered manual workflow into a clean digital system our team actually enjoys using."</blockquote><figcaption><strong>Operations Lead</strong><p>Dar es Salaam Services Group</p></figcaption></figure>
+            <figure class="card reveal"><blockquote>"Their team thinks beyond design. They understood the business process and delivered a website that feels premium and practical."</blockquote><figcaption><strong>Founder</strong><p>Tanzania Growth Brand</p></figcaption></figure>
+            <figure class="card reveal"><blockquote>"The video campaign and landing page gave our launch a more professional presence and better customer response."</blockquote><figcaption><strong>Marketing Manager</strong><p>Regional Retail Company</p></figcaption></figure>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <div class="container contact-grid">
+          <div class="reveal"><p class="label">Contact</p><h2>Ready to build a smarter digital presence?</h2><p>Talk to AI TECH TZ about your app, website, AI system, automation workflow, transformation project, or advertisement video.</p><a class="contact-line" href="tel:0795448801"><strong>Phone:</strong> 0795448801</a><div class="contact-line"><strong>Location:</strong> Kimara Stopover, Dar es Salaam, Tanzania</div><a class="contact-line" href="https://wa.me/255795448801">Chat on WhatsApp</a></div>
+          <form class="reveal"><div class="form-grid"><label>Name<input placeholder="Your name" /></label><label>Phone or email<input placeholder="How we can reach you" /></label><label class="wide">Service<select><option>Select a service</option><option>Mobile App Development</option><option>Website Development</option><option>AI Solutions</option><option>Business Automation</option><option>Digital Transformation</option><option>Advertisement Video Production</option></select></label><label class="wide">Project details<textarea rows="5" placeholder="Tell us what you want to build"></textarea></label></div><button class="btn btn-primary" style="width:100%; margin-top:20px;" type="button">Send Inquiry</button></form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container foot"><div class="brand"><img src="./public/assets/ai-tech-tz-logo.jpeg" alt="" />AI TECH TZ</div><p>Phone: 0795448801 · Kimara Stopover, Dar es Salaam, Tanzania</p></div>
+    </footer>
+    <script>
+      const reveal = () => document.querySelectorAll(".reveal").forEach((el) => {
+        if (el.getBoundingClientRect().top < innerHeight - 70) el.classList.add("visible");
+      });
+      addEventListener("scroll", reveal, { passive: true });
+      reveal();
+      const hamburger = document.querySelector(".hamburger");
+      const drawerBackdrop = document.querySelector(".drawer-backdrop");
+      const closeDrawer = () => {
+        drawerBackdrop.classList.remove("open");
+        drawerBackdrop.setAttribute("aria-hidden", "true");
+        hamburger.setAttribute("aria-expanded", "false");
+      };
+      hamburger.addEventListener("click", () => {
+        drawerBackdrop.classList.add("open");
+        drawerBackdrop.setAttribute("aria-hidden", "false");
+        hamburger.setAttribute("aria-expanded", "true");
+      });
+      document.querySelector(".drawer-close").addEventListener("click", closeDrawer);
+      document.querySelectorAll(".drawer-links a").forEach((link) => link.addEventListener("click", closeDrawer));
+    </script>
+  </body>
+</html>
