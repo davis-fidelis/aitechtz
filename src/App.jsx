@@ -168,7 +168,8 @@ function Header() {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="ml-auto h-full w-full max-w-sm bg-white p-6 shadow-soft"
+              className="mobile-nav-panel ml-auto h-full w-full max-w-sm p-6 shadow-soft"
+              style={{ backgroundColor: '#ffffff' }}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
